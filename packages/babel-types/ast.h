@@ -2,6 +2,10 @@
 #define BABEL_TYPES_AST_H_
 #define DTYPE(x) string type = #x;
 
+int add(int a, int b) {
+    return a +b;
+};
+
 #define D_SIMPLE_STRUCT(StructName) \
     struct StructName : BaseNode    \
     {                               \

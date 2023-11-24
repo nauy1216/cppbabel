@@ -1,38 +1,21 @@
-# cmake_minimum_required(VERSION 3.26)
-# project(cppbabel)
+# 指定文件夹内所有*.h *.cpp文件
+# file(GLOB_RECURSE PACKAGES_SOURCES LIST_DIRECTORIES true *.h *.cpp)
+# set(SOURCES ${PACKAGES_SOURCES})
 
-# set(CMAKE_CXX_STANDARD 17)
+# set(PACKAGES_HEADER_FILES babel-types/utils.h)
+# set(PACKAGES_SOURCE_FILES main.cpp 
+#                           babel-types/utils.cpp)
 
-# # 设置 RTTR 的编译选项
-# set(BUILD_RTTR_DYNAMIC ON)
-# set(BUILD_UNIT_TESTS OFF)
-# set(BUILD_STATIC OFF)
-# set(BUILD_WITH_STATIC_RUNTIME_LIBS OFF)
-# set(BUILD_WITH_RTTI ON)
-# set(BUILD_BENCHMARKS OFF)
-# set(BUILD_EXAMPLES OFF)
-# set(BUILD_DOCUMENTATION OFF)
-# set(BUILD_INSTALLER OFF)
-# set(BUILD_PACKAGE OFF)
-# set(USE_PCH OFF)
-# set(CUSTOM_DOXYGEN_STYLE OFF)
-# set(BUILD_WEBSITE_DOCU OFF)
+# 引入自定义设置
+include(source.cmake)
 
-# # 添加 RTTR 子目录
-# add_subdirectory(../libs/rttr)
-
-# 添加你的项目源代码目录
-# add_subdirectory(packages)
-
-# 这里是为了让packages下的头文件全局可见
-# include_directories(packages)
-
-# file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.h *.cpp)
-add_executable(cppbabel main.cpp)
+# add_executable(cppbabel ${PACKAGES_SOURCES})
+# 生成可执行文件
+add_executable(${BABEL_BINARY}  ${PACKAGES_HEADER_FILES} ${PACKAGES_SOURCE_FILES})
 
 
 # 链接 RTTR 库到你的目标
-target_link_libraries(cppbabel ${BABEL_RTTR_CORE})
+target_link_libraries(${BABEL_BINARY} ${BABEL_RTTR_CORE})
 
 
 
@@ -46,5 +29,6 @@ target_link_libraries(cppbabel ${BABEL_RTTR_CORE})
 # file(GLOB_RECURSE SOURCES LIST_DIRECTORIES true *.h *.cpp)
 # set(SOURCES ${SOURCES})
 # add_executable(${BINARY}_run ${SOURCES})
+# 生成链接库文件
 # 为了让单元测试的时候src下的代码能被作为静态链接库使用
-add_library(${BABEL_BINARY_LIB} STATIC main.cpp)
+add_library(${BABEL_BINARY_LIB} STATIC ${PACKAGES_HEADER_FILES} ${PACKAGES_SOURCE_FILES})

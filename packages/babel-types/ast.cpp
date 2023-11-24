@@ -389,7 +389,7 @@ namespace ast
         bool shorthand;
         vector<Decorator> *decorators;
     };
-
+    
     struct RestElement : BaseNode
     {
         DTYPE(RestElement);

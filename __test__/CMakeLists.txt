@@ -10,3 +10,4 @@ add_test(NAME ${BABEL_BINARY_TEST} COMMAND ${BABEL_BINARY_TEST})
 
 # 链接packages生成的lib库和gtest库
 target_link_libraries(${BABEL_BINARY_TEST} PUBLIC ${BABEL_BINARY_LIB} gtest)
+# target_link_libraries(${BABEL_BINARY_TEST} PUBLIC  gtest)
