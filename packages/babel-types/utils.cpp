@@ -3,7 +3,6 @@
 #include <string>
 #include "babel-types/utils.h"
 
-
 using namespace std;
 
 namespace utils
@@ -28,8 +27,5 @@ namespace utils
     // void inherit(string key, T child, U parent){
 
     // };
-    
-    bool shallowEqual(int n, int m) {
-        return n == m;
-    };
+
 }

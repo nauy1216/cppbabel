@@ -81,6 +81,8 @@
         "list": "cpp",
         "numeric": "cpp",
         "regex": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "forward_list": "cpp",
+        "span": "cpp"
     }
 }

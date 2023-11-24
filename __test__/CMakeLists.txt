@@ -1,9 +1,8 @@
-# set(BINARY ${CMAKE_PROJECT_NAME}_tst)
-
+# __test__文件夹下所有的*.h *.cpp文件
 file(GLOB_RECURSE TEST_SOURCES LIST_DIRECTORIES false *.h *.cpp)
-
 set(SOURCES ${TEST_SOURCES})
 
+# 可执行文件cppbabel_test
 add_executable(${BABEL_BINARY_TEST} ${TEST_SOURCES})
 
 add_test(NAME ${BABEL_BINARY_TEST} COMMAND ${BABEL_BINARY_TEST})
