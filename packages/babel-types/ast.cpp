@@ -1,6 +1,5 @@
 #ifndef BABEL_TYPES_AST_TYPES
 #define BABEL_TYPES_AST_TYPES
-
 #include <string>
 #include <vector>
 #include <tuple>
@@ -8,288 +7,16 @@
 #include <any>
 #include <variant>
 #include <unordered_set>
+#include <rttr/registration>
+#include "./ast.h"
 
+using rttr::registration;
 using std::string;
 using namespace std;
-
-#define DTYPE(x) const string type = #x;
-
-#define D_SIMPLE_STRUCT(StructName) \
-    struct StructName : BaseNode    \
-    {                               \
-        DTYPE(StructName);          \
-    }
-
-#define DSTRUCT(StructName) \
-    struct StructName : BaseNode
+using std::variant;
 
 namespace ast
 {
-    // Node start
-    struct AnyTypeAnnotation;
-    struct ArgumentPlaceholder;
-    struct ArrayExpression;
-    struct ArrayPattern;
-    struct ArrayTypeAnnotation;
-    struct ArrowFunctionExpression;
-    struct AssignmentExpression;
-    struct AssignmentPattern;
-    struct AwaitExpression;
-    struct BigIntLiteral;
-    struct BinaryExpression;
-    struct BindExpression;
-    struct BlockStatement;
-    struct BooleanLiteral;
-    struct BooleanLiteralTypeAnnotation;
-    struct BooleanTypeAnnotation;
-    struct BreakStatement;
-    struct CallExpression;
-    struct CatchClause;
-    struct ClassAccessorProperty;
-    struct ClassBody;
-    struct ClassDeclaration;
-    struct ClassExpression;
-    struct ClassImplements;
-    struct ClassMethod;
-    struct ClassPrivateMethod;
-    struct ClassPrivateProperty;
-    struct ClassProperty;
-    struct ConditionalExpression;
-    struct ContinueStatement;
-    struct DebuggerStatement;
-    struct DecimalLiteral;
-    struct DeclareClass;
-    struct DeclareExportAllDeclaration;
-    struct DeclareExportDeclaration;
-    struct DeclareFunction;
-    struct DeclareInterface;
-    struct DeclareModule;
-    struct DeclareModuleExports;
-    struct DeclareOpaqueType;
-    struct DeclareTypeAlias;
-    struct DeclareVariable;
-    struct DeclaredPredicate;
-    struct Decorator;
-    struct Directive;
-    struct DirectiveLiteral;
-    struct DoExpression;
-    struct DoWhileStatement;
-    struct EmptyStatement;
-    struct EmptyTypeAnnotation;
-    struct EnumBooleanBody;
-    struct EnumBooleanMember;
-    struct EnumDeclaration;
-    struct EnumDefaultedMember;
-    struct EnumNumberBody;
-    struct EnumNumberMember;
-    struct EnumStringBody;
-    struct EnumStringMember;
-    struct EnumSymbolBody;
-    struct ExistsTypeAnnotation;
-    struct ExportAllDeclaration;
-    struct ExportDefaultDeclaration;
-    struct ExportDefaultSpecifier;
-    struct ExportNamedDeclaration;
-    struct ExportNamespaceSpecifier;
-    struct ExportSpecifier;
-    struct ExpressionStatement;
-    struct File;
-    struct ForInStatement;
-    struct ForOfStatement;
-    struct ForStatement;
-    struct FunctionDeclaration;
-    struct FunctionExpression;
-    struct FunctionTypeAnnotation;
-    struct FunctionTypeParam;
-    struct GenericTypeAnnotation;
-    struct Identifier;
-    struct IfStatement;
-    struct Import;
-    struct ImportAttribute;
-    struct ImportDeclaration;
-    struct ImportDefaultSpecifier;
-    struct ImportExpression;
-    struct ImportNamespaceSpecifier;
-    struct ImportSpecifier;
-    struct IndexedAccessType;
-    struct InferredPredicate;
-    struct InterfaceDeclaration;
-    struct InterfaceExtends;
-    struct InterfaceTypeAnnotation;
-    struct InterpreterDirective;
-    struct IntersectionTypeAnnotation;
-    struct JSXAttribute;
-    struct JSXClosingElement;
-    struct JSXClosingFragment;
-    struct JSXElement;
-    struct JSXEmptyExpression;
-    struct JSXExpressionContainer;
-    struct JSXFragment;
-    struct JSXIdentifier;
-    struct JSXMemberExpression;
-    struct JSXNamespacedName;
-    struct JSXOpeningElement;
-    struct JSXOpeningFragment;
-    struct JSXSpreadAttribute;
-    struct JSXSpreadChild;
-    struct JSXText;
-    struct LabeledStatement;
-    struct LogicalExpression;
-    struct MemberExpression;
-    struct MetaProperty;
-    struct MixeDTYPEAnnotation;
-    struct ModuleExpression;
-    struct NewExpression;
-    struct Noop;
-    struct NullLiteral;
-    struct NullLiteralTypeAnnotation;
-    struct NullableTypeAnnotation;
-    struct NumberLiteral;
-    struct NumberLiteralTypeAnnotation;
-    struct NumberTypeAnnotation;
-    struct NumericLiteral;
-    struct ObjectExpression;
-    struct ObjectMethod;
-    struct ObjectPattern;
-    struct ObjectProperty;
-    struct ObjectTypeAnnotation;
-    struct ObjectTypeCallProperty;
-    struct ObjectTypeIndexer;
-    struct ObjectTypeInternalSlot;
-    struct ObjectTypeProperty;
-    struct ObjectTypeSpreadProperty;
-    struct OpaqueType;
-    struct OptionalCallExpression;
-    struct OptionalIndexedAccessType;
-    struct OptionalMemberExpression;
-    struct ParenthesizedExpression;
-    struct PipelineBareFunction;
-    struct PipelinePrimaryTopicReference;
-    struct PipelineTopicExpression;
-    struct Placeholder;
-    struct PrivateName;
-    struct Program;
-    struct QualifieDTYPEIdentifier;
-    struct RecordExpression;
-    struct RegExpLiteral;
-    struct RegexLiteral;
-    struct RestElement;
-    struct RestProperty;
-    struct ReturnStatement;
-    struct SequenceExpression;
-    struct SpreadElement;
-    struct SpreadProperty;
-    struct StaticBlock;
-    struct StringLiteral;
-    struct StringLiteralTypeAnnotation;
-    struct StringTypeAnnotation;
-    struct Super;
-    struct SwitchCase;
-    struct SwitchStatement;
-    struct SymbolTypeAnnotation;
-    struct TSAnyKeyword;
-    struct TSArrayType;
-    struct TSAsExpression;
-    struct TSBigIntKeyword;
-    struct TSBooleanKeyword;
-    struct TSCallSignatureDeclaration;
-    struct TSConditionalType;
-    struct TSConstructSignatureDeclaration;
-    struct TSConstructorType;
-    struct TSDeclareFunction;
-    struct TSDeclareMethod;
-    struct TSEnumDeclaration;
-    struct TSEnumMember;
-    struct TSExportAssignment;
-    struct TSExpressionWithTypeArguments;
-    struct TSExternalModuleReference;
-    struct TSFunctionType;
-    struct TSImportEqualsDeclaration;
-    struct TSImportType;
-    struct TSIndexSignature;
-    struct TSIndexedAccessType;
-    struct TSInferType;
-    struct TSInstantiationExpression;
-    struct TSInterfaceBody;
-    struct TSInterfaceDeclaration;
-    struct TSIntersectionType;
-    struct TSIntrinsicKeyword;
-    struct TSLiteralType;
-    struct TSMappeDTYPE;
-    struct TSMethodSignature;
-    struct TSModuleBlock;
-    struct TSModuleDeclaration;
-    struct TSNamedTupleMember;
-    struct TSNamespaceExportDeclaration;
-    struct TSNeverKeyword;
-    struct TSNonNullExpression;
-    struct TSNullKeyword;
-    struct TSNumberKeyword;
-    struct TSObjectKeyword;
-    struct TSOptionalType;
-    struct TSParameterProperty;
-    struct TSParenthesizeDTYPE;
-    struct TSPropertySignature;
-    struct TSQualifiedName;
-    struct TSRestType;
-    struct TSSatisfiesExpression;
-    struct TSStringKeyword;
-    struct TSSymbolKeyword;
-    struct TSThisType;
-    struct TSTupleType;
-    struct TSTypeAliasDeclaration;
-    struct TSTypeAnnotation;
-    struct TSTypeAssertion;
-    struct TSTypeLiteral;
-    struct TSTypeOperator;
-    struct TSTypeParameter;
-    struct TSTypeParameterDeclaration;
-    struct TSTypeParameterInstantiation;
-    struct TSTypePredicate;
-    struct TSTypeQuery;
-    struct TSTypeReference;
-    struct TSUndefinedKeyword;
-    struct TSUnionType;
-    struct TSUnknownKeyword;
-    struct TSVoidKeyword;
-    struct TaggedTemplateExpression;
-    struct TemplateElement;
-    struct TemplateLiteral;
-    struct ThisExpression;
-    struct ThisTypeAnnotation;
-    struct ThrowStatement;
-    struct TopicReference;
-    struct TryStatement;
-    struct TupleExpression;
-    struct TupleTypeAnnotation;
-    struct TypeAlias;
-    struct TypeAnnotation;
-    struct TypeCastExpression;
-    struct TypeParameter;
-    struct TypeParameterDeclaration;
-    struct TypeParameterInstantiation;
-    struct TypeofTypeAnnotation;
-    struct UnaryExpression;
-    struct UnionTypeAnnotation;
-    struct UpdateExpression;
-    struct V8IntrinsicIdentifier;
-    struct VariableDeclaration;
-    struct VariableDeclarator;
-    struct Variance;
-    struct VoiDTYPEAnnotation;
-    struct WhileStatement;
-    struct WithStatement;
-    struct YieldExpression;
-    // Node end
-
-    struct SourceLocation;
-
-    // TODO
-    struct LVal;
-    struct Pattern;
-    struct Noop;
-    struct PatternLike;
-
     struct BaseComment
     {
         string value;
@@ -339,6 +66,7 @@ namespace ast
         SourceLocation *loc;
         std::tuple<int, int> *range;
         std::map<string, std::any> *extra;
+        RTTR(BaseNode, ATTR9(BaseNode, type, leadingComments, innerComments, trailingComments, start, end, loc, range, extra))
     };
 
     // export type CommentTypeShorthand = "leading" | "inner" | "trailing";
@@ -350,10 +78,15 @@ namespace ast
 
     DSTRUCT(Statement){};
 
-    DSTRUCT(ArrayExpression)
+    struct SpreadElement
+    {
+    };
+
+    struct ArrayExpression : public BaseNode
     {
         DTYPE(ArrayExpression);
-        std::vector<Expression *, SpreadElement *> *elements;
+        std::vector<std::variant<Expression *, SpreadElement *>> *elements;
+        RTTR(ArrayExpression, ATTR3(ArrayExpression, type, elements, start))
     };
 
     struct AssignmentExpression : public Expression

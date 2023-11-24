@@ -1,0 +1,15 @@
+{
+  "name": "cppbabel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd ./dist && cmake .. && make",
+    "build_test": "cd ./dist && cmake .. && cd ./__test__ &&  make",
+    "build_babel": "cd ./dist && cmake .. && cd ./packages && make",
+    "test": "./dist/__test__/cppbabel_test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

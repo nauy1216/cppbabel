@@ -1,8 +1,16 @@
 cmake_minimum_required(VERSION 3.26)
 project(cppbabel)
-
 set(CMAKE_CXX_STANDARD 17)
 
+#编译的二进制文件
+set(BABEL_BINARY ${CMAKE_PROJECT_NAME})
+set(BABEL_BINARY_LIB ${CMAKE_PROJECT_NAME}_lib)
+set(BABEL_BINARY_TEST ${CMAKE_PROJECT_NAME}_test)
+
+# rttr_core
+set(BABEL_RTTR_CORE rttr_core)
+
+# =================RTTR START===============================
 # 设置 RTTR 的编译选项
 set(BUILD_RTTR_DYNAMIC ON)
 set(BUILD_UNIT_TESTS OFF)
@@ -20,11 +28,18 @@ set(BUILD_WEBSITE_DOCU OFF)
 
 # 添加 RTTR 子目录
 add_subdirectory(libs/rttr)
+# =================RTTR END===============================
 
-# 添加你的项目源代码目录
-# add_subdirectory(packages)
 
-add_executable(cppbabel main.cpp)
+# =================cppbabel START===============================
+# 这里是为了让packages下的头文件全局可见
+include_directories(packages)
+add_subdirectory(packages)
+# =================cppbabel START===============================
 
-# 链接 RTTR 库到你的目标
-target_link_libraries(cppbabel rttr_core)
+
+
+# =================googletest START===============================
+add_subdirectory(__test__)
+add_subdirectory(libs/googletest)
+# =================googletest END===============================

@@ -72,6 +72,15 @@
         "fstream": "cpp",
         "iomanip": "cpp",
         "stack": "cpp",
-        "registration": "cpp"
+        "registration": "cpp",
+        "__functional_base_03": "cpp",
+        "filesystem": "cpp",
+        "random": "cpp",
+        "*.h++": "cpp",
+        "future": "cpp",
+        "list": "cpp",
+        "numeric": "cpp",
+        "regex": "cpp",
+        "set": "cpp"
     }
 }
