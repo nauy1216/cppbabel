@@ -1,5 +1,5 @@
-#ifndef BABEL_LOG_
-#define BABEL_LOG_
+#ifndef BABEL_LOG_H_
+#define BABEL_LOG_H_
 #include <string>
 #include "ylog.h"
 
@@ -23,4 +23,4 @@ template<typename T> void Logger::Info(const T &value) {
     getLoggerInstance() -> W(YLog::INFO, "", value);
 }
 
-#endif // BABEL_LOG_
+#endif // BABEL_LOG_H_

@@ -5,7 +5,9 @@
 set(PACKAGES_HEADER_FILES babel-types/utils.h
                           babel-types/ast_macro.h
                           babel-types/ast.h
-                          babel-types/reflect.h)
+                          babel-types/reflect.h
+                          babel-log/ylog.h
+                          babel-log/log.h)
 
 set(PACKAGES_SOURCE_FILES main.cpp 
                           babel-types/utils.cpp

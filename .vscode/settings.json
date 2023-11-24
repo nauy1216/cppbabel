@@ -83,6 +83,8 @@
         "regex": "cpp",
         "set": "cpp",
         "forward_list": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "condition_variable": "cpp",
+        "csignal": "cpp"
     }
 }

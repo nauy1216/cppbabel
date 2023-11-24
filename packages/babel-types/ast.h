@@ -343,15 +343,15 @@ namespace ast
 
     DSTRUCT(Statement){};
 
-    struct SpreadElement
-    {
-    };
-
     struct ArrayExpression : public BaseNode
     {
         DTYPE(ArrayExpression);
         std::vector<std::variant<Expression *, SpreadElement *>> *elements;
         RTTR(ArrayExpression, ATTR3(ArrayExpression, type, elements, start))
+    };
+
+    struct SpreadElement
+    {
     };
 
     struct AssignmentExpression : public Expression
@@ -692,6 +692,13 @@ namespace ast
     {
         DTYPE(ParenthesizedExpression);
         Expression *expression;
+    };
+
+    DSTRUCT(SwitchCase)
+    {
+        DTYPE(SwitchCase);
+        Expression test;
+        vector<Statement *> *consequent;
     };
 
 };

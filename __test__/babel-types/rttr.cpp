@@ -3,6 +3,10 @@
 #include "babel-types/ast_macro.h"
 #include "babel-types/ast.h"
 #include <rttr/registration>
+#include "babel-log/log.h"
+
+using rttr::property;
+using rttr::type;
 
 void printAttrs(rttr::type type, string title)
 {
@@ -16,7 +20,7 @@ void printMethods(rttr::type type, string title)
         std::cout << title << ":methodName: " << prop.get_name() << std::endl;
 }
 
-TEST(test_babel_types_rttr, rttr)
+TEST(test_babel_types_rttr, 手写RTTR注册方法)
 {
     struct MyStruct
     {
@@ -41,7 +45,10 @@ TEST(test_babel_types_rttr, rttr)
     rttr::type t = rttr::type::get<MyStruct>();
     printAttrs(t, "MyStruct");
     printMethods(t, "MyStruct");
+}
 
+TEST(test_babel_types_rttr, 宏生成RTTR注册方法)
+{
     struct MyStudent
     {
         MyStudent(){};
@@ -52,6 +59,28 @@ TEST(test_babel_types_rttr, rttr)
         RTTR(MyStudent, ATTR3(MyStudent, age, name, teachers))
     };
     MyStudent::registerRttr();
-    t = rttr::type::get<MyStudent>();
+    rttr::type t = rttr::type::get<MyStudent>();
     printAttrs(t, "MyStudent");
+}
+
+TEST(test_babel_types_rttr, 测试ArrayExpression)
+{
+    ast::ArrayExpression::registerRttr();
+    rttr::type t = rttr::type::get<ast::ArrayExpression>();
+    printAttrs(t, "ast::ArrayExpression");
+}
+
+TEST(test_babel_types_rttr, 获取常量属性)
+{
+    ast::RegexLiteral b;
+    ast::ArrayExpression::registerRttr();
+    ast::ArrayExpression obj;
+
+    // 先获取属性
+    property prop = type::get(obj).get_property("type");
+    // 获取属性值
+    rttr::variant var_prop = prop.get_value(obj);
+    // 属性值类型转换
+
+    Logger::Info("value => " + var_prop.get_value<std::string>());
 }
