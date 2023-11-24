@@ -4,7 +4,10 @@
 
 set(PACKAGES_HEADER_FILES babel-types/utils.h
                           babel-types/ast_macro.h
-                          babel-types/ast.h)
+                          babel-types/ast.h
+                          babel-types/reflect.h)
 
 set(PACKAGES_SOURCE_FILES main.cpp 
-                          babel-types/utils.cpp)
+                          babel-types/utils.cpp
+                          babel-types/reflect.cpp
+                          babel-types/var.cpp)
