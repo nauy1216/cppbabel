@@ -14,5 +14,5 @@ TEST(test_babel_types_reflect, reflect)
     ast::ArrayExpression arrayExpression;
     ast::BaseNode *arrayExpression_p = &arrayExpression;
     reflect::setProperty(*arrayExpression_p, end, 2);
-    EXPECT_EQ(reflect::getProperty(arrayExpression, end), 2);
+    EXPECT_EQ(reflect::getProperty(*arrayExpression_p, end), 2);
 }

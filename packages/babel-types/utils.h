@@ -7,13 +7,16 @@ using namespace std;
 
 namespace utils
 {
-    template <typename T, typename U>
-    bool shallowEqual(T actual, U expected);
+    template <typename T>
+    bool shallowEqual(T actual, T expected);
 
-    template <typename T, typename U>
-    bool shallowEqual(T actual, U expected)
+    template <typename T>
+    bool shallowEqual(T actual, T expected)
     {
-        return true;
+        if (actual == expected) {
+            return true;
+        }
+        return false;
     };
 
     // template <typename T, typename U>
