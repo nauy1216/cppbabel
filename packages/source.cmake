@@ -7,9 +7,12 @@ set(PACKAGES_HEADER_FILES babel-types/utils.h
                           babel-types/ast.h
                           babel-types/reflect.h
                           babel-log/ylog.h
-                          babel-log/log.h)
+                          babel-log/log.h
+                          babel-shared/any_map.h
+                          )
 
 set(PACKAGES_SOURCE_FILES main.cpp 
                           babel-types/utils.cpp
                           babel-types/reflect.cpp
-                          babel-types/var.cpp)
+                          babel-types/var.cpp
+                          )

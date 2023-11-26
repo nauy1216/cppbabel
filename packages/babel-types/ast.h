@@ -281,6 +281,7 @@ namespace ast
     struct Pattern;
     struct Noop;
     struct PatternLike;
+    struct Declaration;
 
     struct BaseComment
     {
@@ -694,12 +695,193 @@ namespace ast
         Expression *expression;
     };
 
-    DSTRUCT(SwitchCase)
-    {
-        DTYPE(SwitchCase);
-        Expression test;
-        vector<Statement *> *consequent;
-    };
+    // DSTRUCT(SwitchCase)
+    // {
+    //     DTYPE(SwitchCase);
+    //     Expression test;
+    //     vector<Statement *> *consequent;
+    // };
 
+    // DSTRUCT(SwitchStatement)
+    // {
+    //     DTYPE(SwitchStatement);
+    //     Expression *discriminant;
+    //     vector<SwitchCase *> *cases;
+    // };
+
+    // DSTRUCT(ThisExpression)
+    // {
+    //     DTYPE(ThisExpression);
+    // };
+
+    // struct ThrowStatement : BaseNode
+    // {
+    //     string type = "ThrowStatement";
+    //     Expression argument;
+    // };
+
+    // struct TryStatement : BaseNode
+    // {
+    //     string type = "TryStatement";
+    //     BlockStatement block;
+    //     CatchClause handler;
+    //     BlockStatement finalizer;
+    // };
+
+    // struct UnaryExpression : BaseNode
+    // {
+    //     string type = "UnaryExpression";
+    //     string operator_; //"void" , "throw" , "delete" , "!" , "+" , "-" , "~" , "typeof"
+    //     Expression argument;
+    //     bool prefix;
+    // };
+
+    // struct UpdateExpression : BaseNode
+    // {
+    //     string type = "UpdateExpression";
+    //     string operator_; //"++" , "--"
+    //     Expression argument;
+    //     bool prefix;
+    // };
+
+    // struct VariableDeclaration : BaseNode
+    // {
+    //     string type = "VariableDeclaration";
+    //     string kind; // "var" , "let" , "const" , "using" , "await using"
+    //     vector<VariableDeclarator> declarations;
+    //     bool declare;
+    // };
+
+    // struct VariableDeclarator : BaseNode
+    // {
+    //     string type = "VariableDeclarator";
+    //     LVal *id;
+    //     Expression init;
+    //     bool definite;
+    // };
+
+    // struct WhileStatement : BaseNode
+    // {
+    //     string type = "WhileStatement";
+    //     Expression test;
+    //     Statement body;
+    // };
+
+    // struct WithStatement : BaseNode
+    // {
+    //     string type = "WithStatement";
+    //     Expression object;
+    //     Statement body;
+    // };
+
+    // struct AssignmentPattern : BaseNode
+    // {
+    //     string type = "AssignmentPattern";
+    //     variant<Identifier, ObjectPattern, ArrayPattern, MemberExpression, TSAsExpression, TSSatisfiesExpression, TSTypeAssertion, TSNonNullExpression> left;
+    //     Expression right;
+    //     vector<Decorator> decorators;
+    //     bool optional_;
+    //     variant<TypeAnnotation, TSTypeAnnotation, Noop> typeAnnotation;
+    // };
+
+    // struct ArrayPattern : BaseNode
+    // {
+    //     string type = "ArrayPattern";
+    //     vector<PatternLike, LVal *> elements;
+    //     vector<Decorator> decorators;
+    //     bool optional;
+    //     variant<TypeAnnotation, TSTypeAnnotation, Noop> typeAnnotation;
+    // };
+
+    // struct ArrowFunctionExpression : BaseNode
+    // {
+    //     string type = "ArrowFunctionExpression";
+    //     vector<variant<Identifier, Pattern, RestElement *>> params;
+    //     variant<BlockStatement, Expression> body;
+    //     bool async;
+    //     bool expression;
+    //     bool generator;
+    //     variant<DeclaredPredicate, InferredPredicate> predicate;
+    //     variant<TypeAnnotation, TSTypeAnnotation, Noop> returnType;
+    //     variant<TypeParameterDeclaration, TSTypeParameterDeclaration, Noop> typeParameters;
+    // };
+
+    // struct ClassBody : BaseNode
+    // {
+    //     string type = "ClassBody";
+    //     vector<variant<ClassMethod, ClassPrivateMethod, ClassProperty, ClassPrivateProperty, ClassAccessorProperty, TSDeclareMethod, TSIndexSignature, StaticBlock>> body;
+    // };
+
+    // struct ClassExpression : BaseNode
+    // {
+    //     string type = "ClassExpression";
+    //     Identifier id;
+    //     Expression superClass;
+    //     ClassBody body;
+    //     vector<Decorator> decorators;
+    //     vector<TSExpressionWithTypeArguments, ClassImplements> implements;
+    //     InterfaceExtends *mixins;
+    //     variant<TypeParameterInstantiation, TSTypeParameterInstantiation> superTypeParameters;
+    //     variant<TypeParameterDeclaration, TSTypeParameterDeclaration, Noop> typeParameters;
+    // };
+
+    // struct ClassDeclaration : BaseNode
+    // {
+    //     string type = "ClassDeclaration";
+    //     Identifier id;
+    //     Expression superClass;
+    //     ClassBody body;
+    //     vector<Decorator> decorators;
+    //     bool abstract;
+    //     bool declare;
+    //     vector<TSExpressionWithTypeArguments, ClassImplements> implements;
+    //     InterfaceExtends *mixins;
+    //     variant<TypeParameterInstantiation, TSTypeParameterInstantiation> superTypeParameters;
+    //     variant<TypeParameterDeclaration, TSTypeParameterDeclaration, Noop> typeParameters;
+    // };
+
+    // struct ExportAllDeclaration : BaseNode
+    // {
+    //     string type = "ExportAllDeclaration";
+    //     StringLiteral source;
+    //     vector<ImportAttribute> assertions;
+    //     vector<ImportAttribute> attributes;
+    //     string exportKind; // "type" , "value"
+    // };
+
+    // struct ExportDefaultDeclaration : BaseNode
+    // {
+    //     string type = "ExportDefaultDeclaration";
+    //     variant<TSDeclareFunction, FunctionDeclaration, ClassDeclaration, Expression> declaration;
+    //     string exportKind; //"value"
+    // };
+
+    // struct ExportNamedDeclaration : BaseNode
+    // {
+    //     string type = "ExportNamedDeclaration";
+    //     Declaration *declaration;
+    //     vector<variant<ExportSpecifier, ExportDefaultSpecifier, ExportNamespaceSpecifier>> specifiers;
+    //     StringLiteral source;
+    //     vector<ImportAttribute> assertions;
+    //     vector<ImportAttribute> attributes;
+    //     string exportKind; //"type" , "value"
+    // };
+
+    // struct ExportSpecifier : BaseNode
+    // {
+    //     string type = "ExportSpecifier";
+    //     Identifier local;
+    //     variant<Identifier, StringLiteral> exported;
+    //     string exportKind; // "type" , "value"
+    // };
+
+    // struct ForOfStatement : BaseNode
+    // {
+    //     string type = "ForOfStatement";
+    //     variant<VariableDeclaration, LVal *> left;
+    //     Expression right;
+    //     Statement body;
+    //     bool await;
+    // };
 };
 #endif // BABEL_TYPES_AST_H_

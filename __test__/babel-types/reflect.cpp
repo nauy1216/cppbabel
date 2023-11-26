@@ -1,3 +1,6 @@
+#ifndef TEST_BABEL_TYPES_reflect
+#define TEST_BABEL_TYPES_reflect
+
 #include "gtest/gtest.h"
 #include "babel-types/reflect.h"
 #include "babel-types/ast.h"
@@ -16,3 +19,4 @@ TEST(test_babel_types_reflect, reflect)
     reflect::setProperty(*arrayExpression_p, end, 2);
     EXPECT_EQ(reflect::getProperty(*arrayExpression_p, end), 2);
 }
+#endif // TEST_BABEL_TYPES_reflect

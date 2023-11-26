@@ -2,13 +2,20 @@ cmake_minimum_required(VERSION 3.26)
 project(cppbabel)
 set(CMAKE_CXX_STANDARD 17)
 
+# 输出宏展开后的文件
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -E -dD")
+
+# =================vars START===============================
 #编译的二进制文件
 set(BABEL_BINARY ${CMAKE_PROJECT_NAME})
+#链接库
 set(BABEL_BINARY_LIB ${CMAKE_PROJECT_NAME}_lib)
+#编译的单元测试二进制文件
 set(BABEL_BINARY_TEST ${CMAKE_PROJECT_NAME}_test)
 
 # rttr_core
 set(BABEL_RTTR_CORE rttr_core)
+# =================vars START===============================
 
 # =================RTTR START===============================
 # 设置 RTTR 的编译选项

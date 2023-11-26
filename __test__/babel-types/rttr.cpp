@@ -1,9 +1,12 @@
+#ifndef TEST_BABEL_TYPES_rttr
+#define TEST_BABEL_TYPES_rttr
+
 #include "gtest/gtest.h"
 #include "babel-types/reflect.h"
 #include "babel-types/ast_macro.h"
 #include "babel-types/ast.h"
 #include <rttr/registration>
-#include "babel-log/log.h"
+// #include "babel-log/log.h"
 
 using rttr::property;
 using rttr::type;
@@ -82,5 +85,7 @@ TEST(test_babel_types_rttr, 获取常量属性)
     rttr::variant var_prop = prop.get_value(obj);
     // 属性值类型转换
 
-    Logger::Info("value => " + var_prop.get_value<std::string>());
+    // Logger::Info("value => " + var_prop.get_value<std::string>());
 }
+#endif //TEST_BABEL_TYPES_rttr
+

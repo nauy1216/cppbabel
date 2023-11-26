@@ -85,6 +85,7 @@
         "forward_list": "cpp",
         "span": "cpp",
         "condition_variable": "cpp",
-        "csignal": "cpp"
+        "csignal": "cpp",
+        "__functional_03": "cpp"
     }
 }
