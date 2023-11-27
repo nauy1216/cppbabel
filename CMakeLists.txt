@@ -5,6 +5,11 @@ set(CMAKE_CXX_STANDARD 17)
 # 输出宏展开后的文件
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -E -dD")
 
+# 设置构建类型为 Debug
+# 可以设置为"Debug"、"Release"、"RelWithDebInfo" 
+# 如果想进行调试必须构建Debug文件
+set(CMAKE_BUILD_TYPE Debug)
+
 # =================vars START===============================
 #编译的二进制文件
 set(BABEL_BINARY ${CMAKE_PROJECT_NAME})

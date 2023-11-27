@@ -327,11 +327,17 @@ namespace ast
         std::vector<BaseComment *> *leadingComments;
         std::vector<BaseComment *> *innerComments;
         std::vector<BaseComment *> *trailingComments;
-        int start;
-        int end;
+        int start = 0;
+        int end = 0;
         SourceLocation *loc;
         std::tuple<int, int> *range;
         std::map<string, std::any> *extra;
+
+        BaseNode() {
+            start = 0;
+            end = 0;
+        }
+
         RTTR(BaseNode, ATTR9(BaseNode, type, leadingComments, innerComments, trailingComments, start, end, loc, range, extra))
     };
 
@@ -584,6 +590,11 @@ namespace ast
         DTYPE(RegexLiteral);
         string pattern;
         string flags;
+
+        RegexLiteral() {
+       this->flags = "www";
+            
+        }
     };
 
     struct LogicalExpression : BaseNode
