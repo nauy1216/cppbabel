@@ -3,3 +3,56 @@
 # .idea/
 # dist/
 dist/
+
+#====================xcode START====================
+#root
+build/
+CMakeFiles/
+CMakeScripts/
+cppbabel.xcodeproj/
+lib/
+cmake_install.cmake
+CMakeCache.txt
+install_manifest.txt
+
+#libs/googletest
+libs/googletest/CMakeFiles/
+libs/googletest/CMakeScripts/
+libs/googletest/*.xcodeproj/
+libs/googletest/cmake_install.cmake
+libs/googletest/CTestTestfile.cmake
+
+libs/googletest/googletest/CMakeFiles/
+libs/googletest/googletest/CMakeScripts/
+libs/googletest/googletest/*.xcodeproj/
+libs/googletest/googletest/cmake_install.cmake
+libs/googletest/googletest/CTestTestfile.cmake
+libs/googletest/googletest/generated
+
+libs/googletest/googlemock/CMakeFiles/
+libs/googletest/googlemock/CMakeScripts/
+libs/googletest/googlemock/*.xcodeproj/
+libs/googletest/googlemock/cmake_install.cmake
+libs/googletest/googlemock/CTestTestfile.cmake
+
+
+#libs/rttr
+libs/rttr/CMake
+libs/rttr/CMakeFiles
+libs/rttr/CMakeScripts
+libs/rttr/install
+libs/rttr/*.xcodeproj/
+libs/rttr/cmake_install.cmake
+libs/rttr/src/rttr/detail/base/version.h
+libs/rttr/src/rttr/detail/base/version.rc
+
+#packages
+packages/CMakeFiles
+packages/Debug
+packages/cmake_install.cmake
+
+#__test__
+__test__/CMakeFiles
+__test__/Debug
+__test__/cmake_install.cmake
+#====================xcode END====================

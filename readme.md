@@ -10,5 +10,7 @@ https://blog.csdn.net/Fei20140908/article/details/104344462
 
 #### 在链接第三方库的时候，记得cppbabel和cppbabel_lib都要链接
 
+#### cmake转xcodedebug
+cmake -G "Xcode" .
 
 
