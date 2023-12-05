@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-namespace tokenizer_state
+namespace options
 {
     struct PluginList;
 

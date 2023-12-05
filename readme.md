@@ -12,5 +12,6 @@ https://blog.csdn.net/Fei20140908/article/details/104344462
 
 #### cmake转xcodedebug
 cmake -G "Xcode" .
+注意： 切换xcode到vscode编译时要删除CMakeCache.txt文件。
 
 

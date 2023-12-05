@@ -1,26 +1,47 @@
 #ifndef BABEL_LOG_H_
 #define BABEL_LOG_H_
 #include <string>
+#include <sstream>
+
 #include "ylog.h"
 
+using namespace std;
+
 const std::string filePath = "/Users/liuchengyuan/Documents/clangspace/cppbabel/info.log";
-YLog* _log;
 
-YLog* getLoggerInstance() {
-    if (_log != nullptr) {
-        return _log;
-    }
-    _log = new YLog(YLog::INFO, filePath, YLog::ADD);
-    return _log;
-};
+class Logger
+{
+private:
+    // 输出代码所在的文件位置
+    std::string codefile = "";
+    // 写入本地文件
+    YLog *log;
+    // 缓存日志
+    ostringstream *oss;
 
-class Logger {
 public:
-    template<typename T> static void Info(const T &value);
+    Logger(const string &codefile) : codefile(codefile)
+    {
+        this->log = new YLog(YLog::INFO, filePath, YLog::ADD);
+        this->oss = new ostringstream();
+    };
+    ~Logger()
+    {
+        delete this->log;
+        delete this->oss;
+    };
+
+    template <typename T>
+    Logger *Info(const T &value)
+    {
+        // 注意这里不能写成 (this->oss) << value;
+        *(this->oss) << value;
+        return this;
+    };
+
+    void Endl(const int codeline)
+    {
+        this->log->writeFile(codefile, codeline, YLog::INFO, this->oss->str());
+    };
 };
-
-template<typename T> void Logger::Info(const T &value) {
-    getLoggerInstance() -> W(YLog::INFO, "", value);
-}
-
 #endif // BABEL_LOG_H_

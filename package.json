@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "cd ./dist && cmake .. && make",
+    "build": "./scripts/build.sh",
     "build_test": "cd ./dist && cmake .. && cd ./__test__ &&  make",
     "build_babel": "cd ./dist && cmake .. && cd ./packages && make",
     "test": "./dist/__test__/cppbabel_test",
