@@ -1,3 +1,5 @@
-2023-12-5 17:48:19 [INFO] rttr => 2        @at [/Users/liuchengyuan/Documents/clangspace/cppbabel/__test__/babel-types/rttr.cpp:55] 
-2023-12-5 17:48:19 [INFO] 测试可变参数  ==>  82770196        @at [/Users/liuchengyuan/Documents/clangspace/cppbabel/__test__/base/func.cpp:55] 
-2023-12-5 17:48:19 [INFO] printVector age => 18 age => 20        @at [/Users/liuchengyuan/Documents/clangspace/cppbabel/__test__/base/vector.cpp:31] 
+2023-12-05 19:04:54 [INFO] rttr => 2        @at[/Users/liuchengyuan/Documents/clangspace/cppbabel/__test__/babel-types/rttr.cpp:55] 
+2023-12-05 19:04:54 [INFO] 【可变参数】         @at[/Users/liuchengyuan/Documents/clangspace/cppbabel/__test__/base/func.cpp:49] 
+2023-12-05 19:04:54 [INFO]  sum(3, 1, 2, 3) => 6        @at[/Users/liuchengyuan/Documents/clangspace/cppbabel/__test__/base/func.cpp:51] 
+2023-12-05 19:04:54 [INFO]  sum2({1, 2, 3}) => 6        @at[/Users/liuchengyuan/Documents/clangspace/cppbabel/__test__/base/func.cpp:52] 
+2023-12-05 19:04:54 [INFO] printVector age => 18 age => 20        @at[/Users/liuchengyuan/Documents/clangspace/cppbabel/__test__/base/vector.cpp:31] 

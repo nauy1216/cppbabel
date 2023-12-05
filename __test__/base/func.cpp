@@ -46,13 +46,10 @@ namespace base_func
 
     TEST(TEST_base_base_func, func_args)
     {
-        log.Info("测试可变参数  ==>  ");
-
-        int result = sum(3, 1, 2);
-
-        log.Info(result);
-
-        log.Info(sum2({1, 2, 3}))->Endl(__LINE__);
+        log << "【可变参数】 " <<  log.endl(__LINE__);
+        int result = sum(3, 1, 2, 3);
+        log << " sum(3, 1, 2, 3) => " <<  result << log.endl(__LINE__);
+        log << " sum2({1, 2, 3}) => " << sum2({1, 2, 3}) << log.endl(__LINE__);
     }
 }
 #endif // TEST_base_func

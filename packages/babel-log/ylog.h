@@ -59,6 +59,13 @@ public:
     return;
   }
 
+  string paddingText(int n) {
+    if (n < 10) {
+      return "0" + std::to_string(n);
+    }
+    return std::to_string(n);
+  };
+
   void openFileCheck() {
     assert(this->of_.is_open() && "Logfile write failed.");
   };
@@ -77,7 +84,7 @@ public:
     localtime_r(&sectime, &tmtime);
 #endif
     // 年月日时分秒
-    this->of_ << tmtime.tm_year + 1900 << '-' << tmtime.tm_mon + 1 << '-' << tmtime.tm_mday << ' ' << tmtime.tm_hour << ':' << tmtime.tm_min << ':' << tmtime.tm_sec;
+    this->of_ << tmtime.tm_year + 1900 << '-' << paddingText(tmtime.tm_mon + 1) << '-' << paddingText(tmtime.tm_mday) << ' ' << paddingText(tmtime.tm_hour) << ':' << paddingText(tmtime.tm_min) << ':' << paddingText(tmtime.tm_sec);
   };
 
   void writeLevel(int level)
@@ -110,7 +117,7 @@ public:
   void writeEndl(const string &codefile, const int codeline)
   {
     // 文件名:行号
-    this->of_ << "        @at [" << codefile << ':' << codeline << "] ";
+    this->of_ << "        @at[" << codefile << ':' << codeline << "] ";
     // 换行
     this->of_ << std::endl;
   }
