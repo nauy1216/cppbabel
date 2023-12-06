@@ -1,5 +1,5 @@
-#ifndef TEST_BABEL_TYPES_string_enum
-#define TEST_BABEL_TYPES_string_enum
+#ifndef TEST_BABEL_base_string_enum
+#define TEST_BABEL_base_string_enum
 
 #include "gtest/gtest.h"
 #include <rttr/registration>
@@ -7,13 +7,16 @@
 
 using namespace std;
 
-enum charcodes
+namespace base_string_enum
 {
-    a,
-    b,
-    c,
-    d
-};
+
+    enum charcodes
+    {
+        a,
+        b,
+        c,
+        d
+    };
 
 #define ENUM_VAULE(enumName, name) \
     case enumName::name:           \
@@ -32,19 +35,17 @@ enum charcodes
         return result;                   \
     }
 
-ENUM_GETTER(charcodes, ENUM_VAULE(charcodes, a) ENUM_VAULE(charcodes, b) ENUM_VAULE(charcodes, c) ENUM_VAULE(charcodes, d))
+    ENUM_GETTER(charcodes, ENUM_VAULE(charcodes, a) ENUM_VAULE(charcodes, b) ENUM_VAULE(charcodes, c) ENUM_VAULE(charcodes, d))
 
+    TEST(test_base_string_enum, base_string_enum)
+    {
+        //  rttr::registration::class_<MyClass>("MyClass")
+        //         .property("staticVar", &MyClass::staticVar);
 
-
-TEST(test_base_struct, 字符串枚举)
-{
-    //  rttr::registration::class_<MyClass>("MyClass")
-    //         .property("staticVar", &MyClass::staticVar);
-
-    EXPECT_EQ(enum_charcodes(charcodes::a), "a");
-    EXPECT_EQ(enum_charcodes(charcodes::b), "b");
-    EXPECT_EQ(enum_charcodes(charcodes::c), "c");
-    EXPECT_EQ(enum_charcodes(charcodes::d), "d");
+        EXPECT_EQ(enum_charcodes(charcodes::a), "a");
+        EXPECT_EQ(enum_charcodes(charcodes::b), "b");
+        EXPECT_EQ(enum_charcodes(charcodes::c), "c");
+        EXPECT_EQ(enum_charcodes(charcodes::d), "d");
+    }
 }
-
-#endif //TEST_BABEL_TYPES_string_enum
+#endif // TEST_BABEL_base_string_enum

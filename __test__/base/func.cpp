@@ -1,5 +1,5 @@
-#ifndef TEST_base_func
-#define TEST_base_func
+#ifndef TEST_BABEL_base_func
+#define TEST_BABEL_base_func
 
 #include "gtest/gtest.h"
 #include <vector>
@@ -50,7 +50,7 @@ namespace base_func
     /**
      * 函数使用可变参数的2种方式
     */
-    TEST(TEST_base_base_func, func_args)
+    TEST(TEST_base_func, base_func_args)
     {
         log << "【可变参数】 " << log.endl(__LINE__);
         int result = sum(3, 1, 2, 3);
@@ -67,7 +67,7 @@ namespace base_func
     /**
      * 对象作为函数参数会复制一个新的对象
     */
-    TEST(TEST_base_base_func, func_args_struct)
+    TEST(TEST_base_func, base_func_args_struct)
     {
         log << "【对象作为参数】 " << log.endl(__LINE__);
         utils_struct::Student s1(12, "aaa");
@@ -86,7 +86,7 @@ namespace base_func
     /**
      * 返回值也是一个复制对象
     */
-    TEST(TEST_base_base_func, func_return_struct)
+    TEST(TEST_base_func, base_func_return_struct)
     {
         log << "【对象作返回值】 " << log.endl(__LINE__);
         utils_struct::Student s1(12, "aaa");
@@ -103,7 +103,7 @@ namespace base_func
         log << " 传参数之后的地址：  " << old << log.endl(__LINE__);
     };
 
-    TEST(TEST_base_base_func, func_args_pointer)
+    TEST(TEST_base_func, base_func_args_pointer)
     {
         log << "【指针传参】 " << log.endl(__LINE__);
         utils_struct::Student s1(12, "aaa");
@@ -124,7 +124,7 @@ namespace base_func
     /**
      * 指针作为参数，返回传入的指针
     */
-    TEST(TEST_base_base_func, func_return_pointer)
+    TEST(TEST_base_func, base_func_return_pointer)
     {
         log << "【参数是指针，返回指针】 " << log.endl(__LINE__);
         utils_struct::Student s1(12, "aaa");
@@ -152,7 +152,7 @@ namespace base_func
         log << " 传参数之后的地址：  " << &old << log.endl(__LINE__);
     };
 
-    TEST(TEST_base_base_func, func_args_ref)
+    TEST(TEST_base_func, base_func_args_ref)
     {
         log << "【参数是引用】 " << log.endl(__LINE__);
         utils_struct::Student s1(12, "aaa");
@@ -180,7 +180,7 @@ namespace base_func
     };
 
 
-    TEST(TEST_base_base_func, func_return_ref)
+    TEST(TEST_base_func, base_func_return_ref)
     {
         log << "【返回是引用】 " << log.endl(__LINE__);
         utils_struct::Student s1(12, "aaa");
@@ -190,5 +190,19 @@ namespace base_func
         utils_struct::Student& s2 = getNewObjRef(s1);
         log << " 返回的地址 " << &s2 << log.endl(__LINE__);
     };
+
+    TEST(TEST_base_func, base_func_lambda)
+    {
+        log << "【lambda】 " << log.endl(__LINE__);
+
+        int first_num = 1;
+
+        auto add = [first_num](int a) -> int {
+            return first_num + a;
+        };
+
+        log << " add(2) ==>" << add(2) << log.endl(__LINE__);
+    };
+
 }
-#endif // TEST_base_func
+#endif // TEST_BABEL_base_func

@@ -1,46 +1,45 @@
-#ifndef TEST_BABEL_TYPES_struct
-#define TEST_BABEL_TYPES_struct
+#ifndef TEST_BABEL_base_struct
+#define TEST_BABEL_base_struct
 
 #include "gtest/gtest.h"
 
 using namespace std;
 
-struct MyStudent1
+namespace base_struct
 {
-    MyStudent1(){};
-    void func(double){};
-    int age;
-    string name;
-    std::vector<std::string *> *teachers;
-};
 
-MyStudent1 s = []() -> MyStudent1
-{
-    MyStudent1 s;
-    s.age = 18;
-    return s;
-}();
+#define OB(StructName, ...) \
+    [] {                    \
+        StructName t;       \
+        __VA_ARGS__         \
+        return t;           \
+    }()
 
-TEST(test_base_struct, 结构体字面量)
-{
-    // struct MyStudent
-    // {
-    //     MyStudent(){};
-    //     void func(double){};
-    //     int age;
-    //     string name;
-    //     std::vector<std::string *> *teachers;
-    // };
-    // MyStudent s = []() -> MyStudent {
-    //     MyStudent s;
-    //     s.age = 18;
-    //     return s;
-    // }();
+#define PROP(name, value) \
+    t.name = value;
 
-    // MyStudent *s;
-    // s->age = 18;
+    struct MyStudent1
+    {
+        MyStudent1(){};
+        void func(double){};
+        int age;
+        string name;
+        std::vector<std::string *> *teachers;
+    };
 
-    EXPECT_EQ(s.age, 18);
+    TEST(test_base_struct, base_struct)
+    {
+        MyStudent1 s = OB(MyStudent1,
+                          PROP(age, 18)
+                          PROP(name, "name"));
+
+
+        EXPECT_EQ(s.age, 18);
+    }
+
+
+
+
+
 }
-
-#endif //TEST_BABEL_TYPES_struct
+#endif // TEST_BABEL_base_struct

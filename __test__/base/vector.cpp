@@ -31,7 +31,7 @@ namespace base_vector
         log.Endl(__LINE__);
     };
 
-    TEST(TEST_base_vector_test, test_vector)
+    TEST(TEST_base_vector_test, base_vector)
     {
 
         Student s1(18, "s1");
