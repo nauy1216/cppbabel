@@ -26,7 +26,7 @@ namespace base_union
         int k;
     };
 
-    TEST(test_base_union, base_union)
+    TEST(test_base_union, base_union_)
     {
         log << "【union】" << log.endl(__LINE__);
         testunion a;

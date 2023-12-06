@@ -37,7 +37,7 @@ namespace base_string_enum
 
     ENUM_GETTER(charcodes, ENUM_VAULE(charcodes, a) ENUM_VAULE(charcodes, b) ENUM_VAULE(charcodes, c) ENUM_VAULE(charcodes, d))
 
-    TEST(test_base_string_enum, base_string_enum)
+    TEST(test_base_string_enum, base_string_enum_)
     {
         //  rttr::registration::class_<MyClass>("MyClass")
         //         .property("staticVar", &MyClass::staticVar);

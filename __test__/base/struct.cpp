@@ -27,7 +27,7 @@ namespace base_struct
         std::vector<std::string *> *teachers;
     };
 
-    TEST(test_base_struct, base_struct)
+    TEST(test_base_struct, base_struct_)
     {
         MyStudent1 s = OB(MyStudent1,
                           PROP(age, 18)

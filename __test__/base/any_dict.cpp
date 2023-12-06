@@ -94,7 +94,7 @@ namespace base_any_dict
         EXPECT_EQ(anyMap.value<string>("test_string"), "a");
     }
 
-    TEST(test_base_any_dict, base_any_dict)
+    TEST(test_base_any_dict, base_any_dict_)
     {
         test_Attr();
         test_AnyMap();

@@ -33,7 +33,7 @@ namespace base_enum
         };
     };
 
-    TEST(test_base_enum, base_enum)
+    TEST(test_base_enum, base_enum_)
     {
         log << "【enum】" << log.endl(__LINE__);
 
