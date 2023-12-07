@@ -112,7 +112,7 @@ g++ -o ./zeus zeus.o libstar.so
 # 解压
 ar -x libstar.a
 # 打包动态库
-gcc -fPIC -shared -o libpower.so dog.o pig.o moon.o earth.o sun.o
+g++ -fPIC -shared -o libpower.so dog.o pig.o moon.o earth.o sun.o
 # 链接动态库
-gcc -o hades hades.o libpower.so
+g++ -o hades hades.o libpower.so
 ```
