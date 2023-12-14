@@ -8,6 +8,7 @@
 #include <any>
 #include <map>
 #include "babel-shared/any_map.h"
+#include "dbg.h"
 
 using namespace std;
 using shared::AnyMap;
@@ -92,6 +93,12 @@ namespace base_any_dict
         EXPECT_EQ(anyMap.has("test_string"), true);
         EXPECT_EQ(anyMap.get("test_string").value<string>(), "a");
         EXPECT_EQ(anyMap.value<string>("test_string"), "a");
+
+        Attr a = anyMap["test_string"];
+        if (a.exist())
+        {
+            dbg(a.value<string>());
+        }
     }
 
     TEST(test_base_any_dict, base_any_dict_)

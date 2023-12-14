@@ -1,5 +1,6 @@
 # 文档
 https://ffmpeg.xianwaizhiyin.net/base-compile/linux-c-single.html
+https://brightliao.com/2020/03/29/native-code-compilation-process-programmers-should-know/
 
 # 编译单个cpp程序文件
 ```shell
@@ -116,3 +117,11 @@ g++ -fPIC -shared -o libpower.so dog.o pig.o moon.o earth.o sun.o
 # 链接动态库
 g++ -o hades hades.o libpower.so
 ```
+
+
+# 整个编译过程将分为以下 4 个步骤完成：
+
+1. 预处理，处理源代码中的文件包含、宏展开等，通过 gcc -E hello_world.c 命令可以看到预处理结果
+2. 编译，将预处理后的文件编译为汇编代码，通过 gcc -S hello_world.c 命令可以生成汇编文件 hello_world.s
+3. 汇编，将编译之后的汇编代码生成可重定向的二进制文件，通过 gcc -c hello_world.c 命令可生成文件 hello_world.o
+4. 链接，将可重定向文件与库文件一起链接生成可执行的二进制文件，通过 gcc hello_world.o 可生成文件 a.out

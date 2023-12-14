@@ -46,6 +46,9 @@ libs/rttr/cmake_install.cmake
 libs/rttr/src/rttr/detail/base/version.h
 libs/rttr/src/rttr/detail/base/version.rc
 
+#libs/dbg_macro
+libs/dbg-macro/dbg_macro.xcodeproj
+
 #packages
 packages/CMakeFiles
 packages/Debug
@@ -56,3 +59,4 @@ __test__/CMakeFiles
 __test__/Debug
 __test__/cmake_install.cmake
 #====================xcode END====================
+

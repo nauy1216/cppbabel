@@ -86,6 +86,7 @@
         "span": "cpp",
         "condition_variable": "cpp",
         "csignal": "cpp",
-        "__functional_03": "cpp"
+        "__functional_03": "cpp",
+        "queue": "cpp"
     }
 }

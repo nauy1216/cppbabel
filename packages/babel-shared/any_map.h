@@ -97,10 +97,18 @@ namespace shared
         bool has(string attrName) {
             return get(attrName).exist();
         }
-        // Attr operator[](string attrName)
-        // {
+
+        // 获取值
+        Attr operator[](string attrName)
+        {
+            return get(attrName);
+        }
+
+        // 赋值
+        // Attr& operator[](string attrName) {
         //     return get(attrName);
         // }
+
     };
 
 }

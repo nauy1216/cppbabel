@@ -42,6 +42,13 @@ set(BUILD_WEBSITE_DOCU OFF)
 add_subdirectory(libs/rttr)
 # =================RTTR END===============================
 
+# =================dbg-macro START===============================
+add_definitions(-DDBG_MACRO_NO_WARNING)
+# header only
+include_directories(libs/dbg-macro)
+add_subdirectory(libs/dbg-macro)
+# =================dbg-macro START===============================
+
 
 # =================cppbabel START===============================
 # 这里是为了让packages下的头文件全局可见
