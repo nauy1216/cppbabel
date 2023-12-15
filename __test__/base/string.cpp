@@ -3,6 +3,8 @@
 #include <string>
 #include "gtest/gtest.h"
 #include "babel-log/log.h"
+#include "utf8.h"
+#include <vector>
 
 using namespace std;
 
@@ -60,11 +62,15 @@ namespace base_string
     TEST(test_base_string, base_string__charCode)
     {
         std::cout << "【charCode】" << endl;
-        std::string input = "你好，世界！";
 
-        int result = codePointAtPos(input, 0);
+        std::string str = "刘𠮷abcdefghijklmnopqrstuvwxyz";
+        std::vector<unsigned short> utf16result;
+        utf8::utf8to16(str.begin(), str.end(), std::back_inserter(utf16result));
+        std::cout << " utf16result.size() "  << utf16result.size() << endl;
 
-        std::cout << " charCode result ==> " << result << endl;
+        // for (int i = 0; i < utf16result.size(); i++) {
+        //     std::cout << utf16result.at(i) << endl;
+        // }
     }
 
 }

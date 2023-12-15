@@ -47,7 +47,13 @@ add_definitions(-DDBG_MACRO_NO_WARNING)
 # header only
 include_directories(libs/dbg-macro)
 add_subdirectory(libs/dbg-macro)
-# =================dbg-macro START===============================
+# =================dbg-macro END===============================
+
+# =================utfcpp START===============================
+# header only
+include_directories(libs/utfcpp/source)
+add_subdirectory(libs/utfcpp)
+# =================utfcpp END===============================
 
 
 # =================cppbabel START===============================

@@ -9,6 +9,7 @@ set(PACKAGES_HEADER_FILES babel-types/utils.h
                           babel-log/ylog.h
                           babel-log/log.h
                           babel-shared/any_map.h
+                          babel-parser/util_utf8.h
                           )
 
 set(PACKAGES_SOURCE_FILES main.cpp 
